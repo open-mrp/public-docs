@@ -735,12 +735,6 @@ export function generateStaticParams() {
   {
     "slug": [
       "manage-account",
-      "plans-and-billing"
-    ]
-  },
-  {
-    "slug": [
-      "manage-account",
       "sandboxes"
     ]
   },

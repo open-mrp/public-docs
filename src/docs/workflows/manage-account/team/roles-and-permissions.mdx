@@ -13,7 +13,7 @@ nav:
 
 ### Why roles matter
 
-- **Security**: restrict access to sensitive areas like billing, API keys, and team management
+- **Security**: restrict access to sensitive areas like API keys, integrations, and team management
 - **Simplicity**: assign one role per user instead of configuring individual permissions
 - **Consistency**: the same role system applies to both <InternalLink pathKey="manageAccount.team.teamMembers" text="team members" /> and <InternalLink pathKey="manageAccount.apiKeys" text="API keys" />
 
@@ -24,7 +24,7 @@ OpenMRP ships a small number of global roles. They are shared across OpenMRP rat
 - **Admin**: full access to every feature, setting, and management capability
 - **Customer**: the role assigned to <InternalLink pathKey="generateSales.customerPortal" text="customer portal" /> users, granting the narrow set of permissions the portal needs
 
-Admin is more than a role with every box ticked. The admin role type bypasses permission checks outright, and a few areas require it and cannot be delegated to a custom role no matter how it is configured: API keys, plan and billing changes, and connecting integrations.
+Admin is more than a role with every box ticked. The admin role type bypasses permission checks outright, and a few areas require it and cannot be delegated to a custom role no matter how it is configured: API keys and connecting integrations.
 
 Everything else is a custom role you create.
 

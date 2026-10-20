@@ -84,7 +84,7 @@ const BROWSE_BY_WORKFLOW: ProductLink[] = [
     {
         label: 'Manage your account',
         href: '/manage-account/overview',
-        description: 'Team, API keys & billing',
+        description: 'Team, API keys & integrations',
     },
 ];
 
@@ -144,7 +144,11 @@ export function HomeQuickLinks() {
                 <h2 className={headingClass}>Browse by workflow</h2>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
                     {BROWSE_BY_WORKFLOW.map((product) => (
-                        <Link key={product.href} href={product.href} className="group flex flex-col gap-0.5">
+                        <Link
+                            key={product.href}
+                            href={product.href}
+                            className="group flex flex-col gap-0.5"
+                        >
                             <span className="inline-flex items-center gap-1.5 text-sm font-medium text-stone-900 dark:text-white">
                                 {product.label}
                                 <ChevronRightIcon className={arrowClass} />

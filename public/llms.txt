@@ -132,12 +132,11 @@
 
 ## Manage your account
 - [Your profile](https://docs.openmrp.ai/workflows/manage-account/account-settings/profile.md): Update your display name, email address, and profile photo.
-- [Overview](https://docs.openmrp.ai/workflows/manage-account/overview.md): Configure your account settings, team, integrations, security, and billing.
+- [Overview](https://docs.openmrp.ai/workflows/manage-account/overview.md): Configure your account settings, team, integrations, and security.
 - [Team members](https://docs.openmrp.ai/workflows/manage-account/team/team-members.md): Invite, manage, and remove the people who use your OpenMRP account.
 - [Business information](https://docs.openmrp.ai/workflows/manage-account/account-settings/business-information.md): Configure your account name, logo, contact details, and portal slug.
 - [Security](https://docs.openmrp.ai/workflows/manage-account/security.md): Manage your password and keep your account secure.
 - [Roles and permissions](https://docs.openmrp.ai/workflows/manage-account/team/roles-and-permissions.md): Control what team members and API keys can access with granular, role-based permissions.
-- [Plans & billing](https://docs.openmrp.ai/workflows/manage-account/plans-and-billing.md): View your subscription, switch plans, and manage billing through Stripe.
 - [Sandboxes](https://docs.openmrp.ai/workflows/manage-account/sandboxes.md): Create isolated testing environments to develop and experiment without affecting production data.
 - [API keys](https://docs.openmrp.ai/workflows/manage-account/api-keys.md): Create, rotate, and revoke API keys for programmatic access to OpenMRP.
 - [Integrations](https://docs.openmrp.ai/workflows/manage-account/integrations.md): Connect third-party services like Stripe, Shippo, and HubSpot to your OpenMRP account.

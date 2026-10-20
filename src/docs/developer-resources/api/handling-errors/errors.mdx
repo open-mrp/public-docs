@@ -26,21 +26,19 @@ All error responses are wrapped in an `error` object:
         "param": "email",
         "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-| Field             | Type           | How to use it                                                                                         |
-| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
-| `code`            | string         | Exact machine-readable error condition. Branch on this for client behavior.                           |
-| `type`            | string         | Broad category: `invalid_request_error`, `api_error`, or `idempotency_error`.                         |
-| `message`         | string         | Human-readable explanation. Safe to display, but not stable enough to parse.                          |
+| Field             | Type           | How to use it                                                                                           |
+| ----------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
+| `code`            | string         | Exact machine-readable error condition. Branch on this for client behavior.                             |
+| `type`            | string         | Broad category: `invalid_request_error`, `api_error`, or `idempotency_error`.                           |
+| `message`         | string         | Human-readable explanation. Safe to display, but not stable enough to parse.                            |
 | `param`           | string \| null | Offending request field or parameter when OpenMRP can identify one.                                     |
-| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.openmrp.ai/api/errors#{code}`.        |
-| `is_transient`    | boolean        | Whether retrying the same operation may succeed after a delay.                                        |
-| `quota`           | object \| null | Present only for `limit_exceeded`; contains `limit`, `used`, and `reset_at`.                          |
+| `doc_url`         | string         | Documentation link for this error. Usually follows `https://docs.openmrp.ai/api/errors#{code}`.         |
+| `is_transient`    | boolean        | Whether retrying the same operation may succeed after a delay.                                          |
 | `request_log_url` | string \| null | Dashboard link for the request log when one is available. Include this when contacting OpenMRP support. |
 
 ## Handling Strategy
@@ -48,25 +46,24 @@ All error responses are wrapped in an `error` object:
 | Type                    | Meaning                                                                                         | Default action                                                                |
 | ----------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `invalid_request_error` | The request cannot be completed as sent. Examples: bad input, auth, permissions, or not found.  | Fix the request, credentials, account, or resource state before retrying.     |
-| `api_error`             | OpenMRP or a dependency failed while handling a valid request.                                    | Retry only when `is_transient` is `true`; use exponential backoff and jitter. |
+| `api_error`             | OpenMRP or a dependency failed while handling a valid request.                                  | Retry only when `is_transient` is `true`; use exponential backoff and jitter. |
 | `idempotency_error`     | A mutation key is already in use, or the same key was reused with different request parameters. | Retry the same operation only for `idempotency_in_progress`.                  |
 
 For mutating requests, include an idempotency key. If a retry is needed, reuse the same key for the same operation so OpenMRP can avoid duplicate side effects.
 
 ## Quick Reference
 
-| Category                       | Codes                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authentication & authorization | [`expired_token`](#expired_token), [`api_key_expired`](#api_key_expired), [`api_key_revoked`](#api_key_revoked), [`invalid_credentials`](#invalid_credentials), [`insufficient_permissions`](#insufficient_permissions), [`payment_required`](#payment_required), [`agent_spending_cap_reached`](#agent_spending_cap_reached) |
-| Limits                         | [`limit_exceeded`](#limit_exceeded), [`registration_closed`](#registration_closed)                                                                                                                                                                                                                                            |
-| Validation                     | [`validation_failed`](#validation_failed), [`missing_field`](#missing_field), [`invalid_format`](#invalid_format), [`method_not_allowed`](#method_not_allowed)                                                                                                                                                                |
-| Parameters                     | [`parameter_missing`](#parameter_missing), [`parameter_invalid`](#parameter_invalid), [`parameter_unknown`](#parameter_unknown), [`parameters_exclusive`](#parameters_exclusive)                                                                                                                                              |
-| Resources                      | [`resource_not_found`](#resource_not_found), [`resource_exists`](#resource_exists), [`resource_conflict`](#resource_conflict), [`resource_gone`](#resource_gone)                                                                                                                                                              |
-| Idempotency                    | [`idempotency_in_progress`](#idempotency_in_progress)                                                                                                                                                                                                                                                                         |
-| Rate limiting                  | [`rate_limit_exceeded`](#rate_limit_exceeded)                                                                                                                                                                                                                                                                                 |
-| API version                    | [`api_version_required`](#api_version_required), [`api_version_invalid`](#api_version_invalid), [`api_version_too_old`](#api_version_too_old)                                                                                                                                                                                 |
-| Server errors                  | [`internal_error`](#internal_error), [`service_unavailable`](#service_unavailable), [`external_service_error`](#external_service_error), [`timeout`](#timeout), [`connection_error`](#connection_error), [`request_timeout`](#request_timeout), [`client_closed_request`](#client_closed_request)                             |
-
+| Category                       | Codes                                                                                                                                                                                                                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Authentication & authorization | [`expired_token`](#expired_token), [`api_key_expired`](#api_key_expired), [`api_key_revoked`](#api_key_revoked), [`invalid_credentials`](#invalid_credentials), [`insufficient_permissions`](#insufficient_permissions)                                                                           |
+| Registration                   | [`registration_closed`](#registration_closed)                                                                                                                                                                                                                                                     |
+| Validation                     | [`validation_failed`](#validation_failed), [`missing_field`](#missing_field), [`invalid_format`](#invalid_format), [`method_not_allowed`](#method_not_allowed)                                                                                                                                    |
+| Parameters                     | [`parameter_missing`](#parameter_missing), [`parameter_invalid`](#parameter_invalid), [`parameter_unknown`](#parameter_unknown), [`parameters_exclusive`](#parameters_exclusive)                                                                                                                  |
+| Resources                      | [`resource_not_found`](#resource_not_found), [`resource_exists`](#resource_exists), [`resource_conflict`](#resource_conflict), [`resource_gone`](#resource_gone)                                                                                                                                  |
+| Idempotency                    | [`idempotency_in_progress`](#idempotency_in_progress)                                                                                                                                                                                                                                             |
+| Rate limiting                  | [`rate_limit_exceeded`](#rate_limit_exceeded)                                                                                                                                                                                                                                                     |
+| API version                    | [`api_version_required`](#api_version_required), [`api_version_invalid`](#api_version_invalid), [`api_version_too_old`](#api_version_too_old)                                                                                                                                                     |
+| Server errors                  | [`internal_error`](#internal_error), [`service_unavailable`](#service_unavailable), [`external_service_error`](#external_service_error), [`timeout`](#timeout), [`connection_error`](#connection_error), [`request_timeout`](#request_timeout), [`client_closed_request`](#client_closed_request) |
 
 ## Troubleshooting Guide
 
@@ -98,7 +95,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#expired_token",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -132,7 +128,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#api_key_expired",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -162,7 +157,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#api_key_revoked",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -192,7 +186,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#invalid_credentials",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -222,7 +215,6 @@ curl -X PATCH API_HOST/v1/identity/account-users/acus_e5zu8bde0z3h \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#insufficient_permissions",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -232,103 +224,29 @@ The message names the `domain:action` permission the caller is missing, so it te
 
 </ErrorDetails>
 
-<ErrorDetails code="payment_required" meta="402 Payment Required, not transient">
+### Registration
 
-The account's subscription is `past_due`, `canceled`, or `unpaid`.
-
-```bash
-curl API_HOST/v1/catalog/items \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "OpenMRP-Version: CURRENT_API_VERSION" \
-  -H "OpenMRP-Account: YOUR_ACCOUNT_ID"
-```
-
-```json
-{
-    "error": {
-        "code": "payment_required",
-        "type": "invalid_request_error",
-        "message": "Your subscription is past_due. Please update your billing information to continue.",
-        "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#payment_required",
-        "is_transient": false,
-        "quota": null,
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Resolve the billing issue in <DocLink pathKey="manageAccount.plansAndBilling">Plans & billing</DocLink>, confirm the subscription is active, and retry.
-
-</ErrorDetails>
-
-<ErrorDetails code="agent_spending_cap_reached" meta="402 Payment Required, not transient">
-
-The account has a monthly agent spending cap configured and the current period's spend has reached it, so an agent run was refused.
-
-Raise or clear the **Monthly Spending Limit** under **AI Spending** in <DocLink pathKey="manageAccount.plansAndBilling">Plans & billing</DocLink>, or wait for the next billing period. Re-triggering without changing the cap produces the same outcome.
-
-</ErrorDetails>
-
-### Limits
-
-Limits are plan or registration capacity problems. They are not the same as rate limits.
-
-<ErrorDetails code="limit_exceeded" meta="403 Forbidden, not transient">
-
-The account reached a plan-imposed resource limit. The `quota` object provides the current limit, usage, and optional reset time.
-
-```bash
-curl -X POST API_HOST/v1/core/sandboxes \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "OpenMRP-Version: CURRENT_API_VERSION" \
-  -H "OpenMRP-Account: YOUR_ACCOUNT_ID" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"West Coast Sandbox","mode":"seeded"}'
-```
-
-```json
-{
-    "error": {
-        "code": "limit_exceeded",
-        "type": "invalid_request_error",
-        "message": "Maximum of 5 sandbox accounts per account reached.",
-        "param": null,
-        "doc_url": "https://docs.openmrp.ai/api/errors#limit_exceeded",
-        "is_transient": false,
-        "quota": {
-            "limit": 5,
-            "used": 5,
-            "reset_at": null
-        },
-        "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
-    }
-}
-```
-
-Delete unused resources, wait until `reset_at` when present, or upgrade the account's plan.
-
-</ErrorDetails>
+Registration errors are capacity problems on account sign-up. They are not the same as rate limits.
 
 <ErrorDetails code="registration_closed" meta="403 Forbidden, not transient">
 
-We have limited capacity for some plans, so you may encounter an error when attempting to join a particular plan.
+Registration is not accepting new accounts right now.
+
 ```json
 {
     "error": {
         "code": "registration_closed",
         "type": "invalid_request_error",
-        "message": "Registration for the starter plan is currently at capacity.",
+        "message": "Registration is currently closed.",
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#registration_closed",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
 ```
 
-Choose a plan that still has capacity, wait for capacity to reopen, or contact OpenMRP support if this plan should accept new registrations.
+Wait for registration to reopen, or contact OpenMRP support if you expected it to be open.
 
 </ErrorDetails>
 
@@ -356,7 +274,6 @@ curl -X DELETE API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -390,7 +307,6 @@ curl -X POST API_HOST/v1/catalog/units \
         "param": "abbreviation",
         "doc_url": "https://docs.openmrp.ai/api/errors#missing_field",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -422,7 +338,6 @@ curl -X POST API_HOST/v1/catalog/units \
         "param": "ratio_denominator",
         "doc_url": "https://docs.openmrp.ai/api/errors#invalid_format",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -454,7 +369,6 @@ curl -X POST API_HOST/v1/catalog/items/it_pej07ckhvu62 \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#method_not_allowed",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -488,7 +402,6 @@ curl API_HOST/v1/core/addresses/suggestions \
         "param": "input",
         "doc_url": "https://docs.openmrp.ai/api/errors#parameter_missing",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -518,7 +431,6 @@ curl "API_HOST/v1/catalog/items?limit=-25" \
         "param": "limit",
         "doc_url": "https://docs.openmrp.ai/api/errors#parameter_invalid",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -550,7 +462,6 @@ curl "API_HOST/v1/catalog/items?skip=50" \
         "param": "skip",
         "doc_url": "https://docs.openmrp.ai/api/errors#parameter_unknown",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -594,7 +505,6 @@ curl API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#resource_not_found",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -626,7 +536,6 @@ curl -X POST API_HOST/v1/catalog/item-categories \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -660,7 +569,6 @@ curl -X POST API_HOST/v1/catalog/units \
         "param": "name",
         "doc_url": "https://docs.openmrp.ai/api/errors#resource_conflict",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -690,7 +598,6 @@ curl -X DELETE API_HOST/v1/catalog/products/pd_07oe0r7adh2w \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#resource_gone",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -727,7 +634,6 @@ curl -X PATCH API_HOST/v1/operations/shipping-terms/shtm_c5gxy05whw6r \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#idempotency_in_progress",
         "is_transient": true,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -747,7 +653,6 @@ with `type: "idempotency_error"`:
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#validation_failed",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -781,7 +686,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#rate_limit_exceeded",
         "is_transient": true,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -816,7 +720,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#api_version_required",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -846,7 +749,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#api_version_invalid",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -887,7 +789,6 @@ curl API_HOST/v1/catalog/items \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#internal_error",
         "is_transient": true,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -943,7 +844,6 @@ curl -X PUT API_HOST/v1/operations/production-schedules/actions/preview \
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#request_timeout",
         "is_transient": true,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }
@@ -974,7 +874,6 @@ curl --max-time 2 -X POST API_HOST/v1/sales/sales-orders/or_9lqo07quiwyb/actions
         "param": null,
         "doc_url": "https://docs.openmrp.ai/api/errors#client_closed_request",
         "is_transient": false,
-        "quota": null,
         "request_log_url": "https://openmrp.ai/dashboard/request-logs/rq_fbv1ygmybo3eauykr74"
     }
 }

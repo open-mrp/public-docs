@@ -544,10 +544,6 @@ export const navData: TabbedNavData = {
                 {
                     "href": "/manage-account/security",
                     "children": "Security"
-                },
-                {
-                    "href": "/manage-account/plans-and-billing",
-                    "children": "Plans & billing"
                 }
             ]
         },

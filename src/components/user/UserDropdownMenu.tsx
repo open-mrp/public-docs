@@ -81,10 +81,6 @@ export function UserDropdownMenu({ color }: UserDropdownMenuProps) {
                         <div className="px-2 py-1.5">
                             <p className="text-xs text-zinc-500 mb-1">Current Account</p>
                             <p className="text-sm font-medium">{currentAccount.name}</p>
-
-                            <p className="text-xs text-zinc-400 mt-0.5">
-                                Plan: {currentAccount.plan}{' '}
-                            </p>
                         </div>
                     </>
                 )}

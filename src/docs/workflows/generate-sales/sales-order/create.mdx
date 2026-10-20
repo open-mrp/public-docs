@@ -162,7 +162,6 @@ You don’t need to enter these manually:
 - The customer PO number must be unique among that customer's orders. Over the API a duplicate is rejected outright with a conflict; the UI warns you before you get there.
 - Carrier, shipping terms, and payment terms fall back to the customer's defaults when omitted, and the order is rejected if neither the request nor the customer supplies one.
 - Service level falls back to the customer's default **only when `carrier_id` is also omitted**. Supplying a carrier without a service level leaves the service level unset, and a missing service level never rejects the order.
-- Creating an order counts against your plan's invoice allowance. Once the account has reached its `invoices_maximum` for the current billing period, the create is rejected. Sandbox accounts, and plans with no configured limit, are exempt.
 - In the dashboard, credit card numbers are blocked in note fields. That is a UI check — the API does not validate note contents.
 - In the dashboard, a customer on **hold all** or **hold shipment** disables the Issue button and shows a credit-hold banner until the hold is cleared. Holds are not enforced by the API, so an order for a held customer can still be issued over the API.
 
