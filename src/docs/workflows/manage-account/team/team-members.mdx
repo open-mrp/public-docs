@@ -34,11 +34,11 @@ Every team member sits in exactly one of three states:
 
 | Status      | What it means                                                                                                                                         |
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Active**  | The member can sign in and use the account. Active members are the only ones that count against your seat limit.                                      |
+| **Active**  | The member can sign in and use the account.                                                                                                           |
 | **Locked**  | Access is suspended but the membership and its role assignment are intact. Shown as **Locked** in the dashboard; the API calls this state `disabled`. |
 | **Removed** | The member has been removed from the account. This is a soft delete — the record is kept and hidden from the default list.                            |
 
-Locked and removed are separate states, not two names for the same thing. Locking is the reversible pause; removing takes the person off the team. Both free the seat they were occupying, and both can be reversed by activating the member again.
+Locked and removed are separate states, not two names for the same thing. Locking is the reversible pause; removing takes the person off the team. Both can be reversed by activating the member again.
 
 ### Inviting new team members
 
@@ -84,10 +84,6 @@ Locking an already-locked member does nothing rather than failing.
 
 Removal is a soft delete, so the record survives and the member can be restored later. It only affects this account: the person's OpenMRP profile is untouched, and their access to any other account they belong to is unaffected.
 
-**Unlock account** and **Restore user** are the same underlying action — activating the member — applied to a locked member and a removed member respectively. Because activating puts someone back into an active seat, it fails if the account is already at its seat limit. Free a seat or upgrade your plan, then try again.
-
-### Seat limits
-
-Your plan determines the maximum number of active team members. Locked and removed members do not count, so only active members consume seats. If you reach your seat limit, you'll need to <InternalLink pathKey="manageAccount.plansAndBilling" text="upgrade your plan" />, or lock or remove an existing member, before inviting or reactivating someone.
+**Unlock account** and **Restore user** are the same underlying action — activating the member — applied to a locked member and a removed member respectively.
 
 Next: <InternalLink pathKey="manageAccount.team.rolesAndPermissions" text="Roles and permissions" includeArrow />

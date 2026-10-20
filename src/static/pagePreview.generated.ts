@@ -441,11 +441,7 @@ export const pagePreviewData: Record<string, PagePreview> = {
     },
     "/manage-account/overview": {
         "title": "Manage Your Account",
-        "subtitle": "Configure your account settings, team, integrations, security, and billing."
-    },
-    "/manage-account/plans-and-billing": {
-        "title": "Plans and billing",
-        "subtitle": "View your subscription, switch plans, and manage billing through Stripe."
+        "subtitle": "Configure your account settings, team, integrations, and security."
     },
     "/manage-account/sandboxes": {
         "title": "Sandboxes",

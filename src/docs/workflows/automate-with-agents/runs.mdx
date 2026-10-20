@@ -79,7 +79,7 @@ A run's timeline is an ordered list of **steps**. The ones you will see most:
 | `completion`        | The run finished, with duration and token counts                        |
 | `error`             | Something failed                                                        |
 
-The step set is deliberately **open** — new step types are added as the runtime evolves, and a few more you may encounter cover model failover, a scheduled automatic retry, cancellation, a detected repeat loop, and a spending cap being hit. Treat an unrecognized step type as informational rather than something to act on.
+The step set is deliberately **open** — new step types are added as the runtime evolves, and a few more you may encounter cover model failover, a scheduled automatic retry, cancellation, a detected repeat loop, and a provider credit limit being hit. Treat an unrecognized step type as informational rather than something to act on.
 
 ### Safety rails
 
@@ -95,7 +95,7 @@ Agents run unattended, so the runtime bounds them in several ways. All of these 
 
 **A stalled-run reaper.** If a worker is killed mid-run — a deploy, a restart, an out-of-memory kill — the run would otherwise sit in `running` forever, because the process that would have finished it is gone. A reaper fails any run that has been `running` for more than **30 minutes**, with a message explaining the worker was interrupted. The threshold is set well above any legitimate run, so a healthy in-flight run is never reaped.
 
-**A spending cap.** If your account has a monthly agent spending cap and a run would cross it, the run stops cleanly at that point with the limit as its output — it is recorded as finished, not failed, so you can tell a budget stop from a breakage. A billing rejection from the underlying model provider is handled the same way, and is never retried across the model chain, since every model bills the same account.
+**A provider credit limit.** If the underlying model provider rejects a call because its credit limit has been hit, the run stops cleanly at that point with the limit as its output — it is recorded as finished, not failed, so you can tell a credit stop from a breakage. The rejection is never retried across the model chain, since every model bills the same provider account.
 
 ### Reading a failed run
 

@@ -151,9 +151,6 @@ export default function NavbarContents({ hideThemeToggle = false }) {
                                                             {currentAccount.role.name}
                                                         </p>
                                                     )}
-                                                    <p className="text-xs text-[var(--foreground)]/50 mt-1">
-                                                        Plan: {currentAccount.plan}
-                                                    </p>
                                                 </div>
                                             )}
 

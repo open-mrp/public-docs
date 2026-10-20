@@ -31,7 +31,6 @@ export const externalPaths = {
         integrations: openMRPDashboard + '/account?tab=integrations',
         roles: openMRPDashboard + '/roles',
         security: openMRPDashboard + '/account?tab=security',
-        billing: openMRPDashboard + '/account?tab=billing',
         general: openMRPDashboard + '/account?tab=general',
         sandboxes: openMRPDashboard + '/sandboxes',
         units: openMRPDashboard + '/units-of-measure?tab=units',

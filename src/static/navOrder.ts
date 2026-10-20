@@ -103,7 +103,6 @@ export const navOrder: TabNavOrder[] = [
                     'API keys',
                     'Sandboxes',
                     'Security',
-                    'Plans & billing',
                 ],
             },
             {

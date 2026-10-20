@@ -168,7 +168,6 @@ export const docPaths = {
         "customerPortalSettings": "/manage-account/customer-portal-settings",
         "integrations": "/manage-account/integrations",
         "overview": "/manage-account/overview",
-        "plansAndBilling": "/manage-account/plans-and-billing",
         "sandboxes": "/manage-account/sandboxes",
         "security": "/manage-account/security",
         "supportRouting": "/manage-account/support-routing",
