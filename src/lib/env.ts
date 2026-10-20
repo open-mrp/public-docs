@@ -48,7 +48,7 @@ export class Env {
 
     /**
      * Absolute URL on the frontend dashboard. Used for full-page navigations
-     * off the docs site (login, register, dashboard).
+     * off the docs site (login, dashboard).
      */
     public static frontendHref(path: string): string {
         return new URL(path, this.frontendUrl || 'https://openmrp.ai').toString();

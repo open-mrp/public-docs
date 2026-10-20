@@ -32,8 +32,6 @@ export const segmentLabels: Record<string, string> = {
     invoicing: 'Invoicing',
     'accounts-receivable': 'Accounts receivable',
     collecting: 'Collecting',
-    // Get started sections
-    account: 'Account',
     // Developer resources sections
     api: 'API',
     'api-reference': 'API Reference',
