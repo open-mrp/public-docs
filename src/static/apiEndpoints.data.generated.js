@@ -52074,7 +52074,7 @@ export const apiTags = [
             {
                 "operationId": "hide-conversation",
                 "summary": "Hide Conversation",
-                "description": "Hides a conversation from the caller's own list without affecting other participants.\n\nThe caller stays a member and keeps receiving notifications; the conversation simply stops appearing in their list until they unhide it, and new messages do not bring it back on their own. The owner of a conversation cannot hide it.\n\nThis endpoint requires the permission: `messaging:update`.",
+                "description": "Hides a conversation from the caller's own list without affecting other participants.\n\nThe caller stays a member and keeps receiving notifications; the conversation simply stops appearing in their list until they unhide it, and new messages do not bring it back on their own. Any participant can hide a conversation, including its owner.\n\nThis endpoint requires the permission: `messaging:update`.",
                 "method": "POST",
                 "path": "/v1/messaging/conversations/{id}/actions/hide",
                 "domain": "messaging",
