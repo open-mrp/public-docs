@@ -445,6 +445,7 @@ export const docPaths = {
             "createAccountIntegration": "/api-reference/account-integrations/create-account-integration",
             "updateAccountIntegration": "/api-reference/account-integrations/update-account-integration",
             "listAccountIntegrations": "/api-reference/account-integrations/list-account-integrations",
+            "getOpenrouterUsage": "/api-reference/account-integrations/get-openrouter-usage",
             "deleteAccountIntegration": "/api-reference/account-integrations/delete-account-integration"
         },
         "priorities": {

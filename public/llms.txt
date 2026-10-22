@@ -556,6 +556,7 @@
 - [POST Account Integrations — Create Integration](https://docs.openmrp.ai/api-reference/account-integrations/create-account-integration.md)
 - [PUT Account Integrations — Update Integration](https://docs.openmrp.ai/api-reference/account-integrations/update-account-integration.md)
 - [GET Account Integrations — List](https://docs.openmrp.ai/api-reference/account-integrations/list-account-integrations.md)
+- [GET Account Integrations — Get OpenRouter Usage](https://docs.openmrp.ai/api-reference/account-integrations/get-openrouter-usage.md)
 - [DELETE Account Integrations — Delete Integration](https://docs.openmrp.ai/api-reference/account-integrations/delete-account-integration.md)
 
 ## API Objects

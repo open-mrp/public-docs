@@ -1,4 +1,4 @@
 export const API_VERSION = {
-    current: '1.0.forge-preview.9',
+    current: '1.0.forge-preview.10',
     currentCodename: 'forge',
 };

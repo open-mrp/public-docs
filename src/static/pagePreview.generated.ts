@@ -1211,6 +1211,10 @@ export const pagePreviewData: Record<string, PagePreview> = {
         "title": "List Account Integrations",
         "subtitle": "GET /v1/settings/integrations"
     },
+    "/api-reference/account-integrations/get-openrouter-usage": {
+        "title": "Get OpenRouter Usage",
+        "subtitle": "GET /v1/settings/integrations/openrouter/usage"
+    },
     "/api-reference/account-integrations/delete-account-integration": {
         "title": "Delete Account Integration",
         "subtitle": "DELETE /v1/settings/integrations/{id}"

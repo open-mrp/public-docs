@@ -1694,6 +1694,17 @@ export const latestApiNavEntries: ApiNavEntry[] = [
     {
         "domain": "settings",
         "segments": [
+            "integrations",
+            "openrouter",
+            "usage"
+        ],
+        "tagSlug": "account-integrations",
+        "endpointSlug": "get-openrouter-usage",
+        "label": "List"
+    },
+    {
+        "domain": "settings",
+        "segments": [
             "integrations"
         ],
         "tagSlug": "account-integrations",

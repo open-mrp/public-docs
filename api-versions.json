@@ -1,6 +1,7 @@
 {
     "$comment": "Archived API versions shown in the docs version picker, newest first. The latest version always comes from specs/public_openapi_spec.json (S3 openapi.json). Archived versions are not built into the repo: the docs server fetches each one's spec from the public open-mrp/openapi-spec repo at the tag in specTags (its last {version}-rev.{N}) the first time someone opens it (src/lib/archived-api-versions.ts). scripts/archive-previous-api-version.ts fills both in on release.",
     "archived": [
+        "1.0.forge-preview.9",
         "1.0.forge-preview.8",
         "1.0.forge-preview.7",
         "1.0.forge-preview.6",
@@ -18,6 +19,7 @@
         "1.0.forge-preview.2": "1.0.forge-preview.2-rev.41",
         "1.0.forge-preview.1": "1.0.forge-preview.1-rev.38",
         "1.0.forge-preview.7": "1.0.forge-preview.7-rev.2",
-        "1.0.forge-preview.8": "1.0.forge-preview.8-rev.4"
+        "1.0.forge-preview.8": "1.0.forge-preview.8-rev.4",
+        "1.0.forge-preview.9": "1.0.forge-preview.9-rev.2"
     }
 }
