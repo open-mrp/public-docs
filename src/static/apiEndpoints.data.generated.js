@@ -137394,17 +137394,17 @@ export const apiTags = [
                         {
                             "name": "state",
                             "type": "string",
-                            "description": "State or administrative area.\n\nSend an empty string to clear.",
+                            "description": "State or administrative area.\n\nSend `null` or an empty string to clear. Send `null` to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
                             "name": "postal_code",
                             "type": "string",
-                            "description": "Postal or ZIP code.\n\nSend an empty string to clear.",
+                            "description": "Postal or ZIP code.\n\nSend `null` or an empty string to clear. Send `null` to clear.",
                             "required": false,
-                            "nullable": false,
+                            "nullable": true,
                             "expandable": false
                         },
                         {
@@ -138384,7 +138384,7 @@ export const apiTags = [
                         {
                             "name": "state",
                             "type": "string",
-                            "description": "State or administrative area.",
+                            "description": "State or administrative area. Empty for an address without one.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
@@ -138392,7 +138392,7 @@ export const apiTags = [
                         {
                             "name": "postal_code",
                             "type": "string",
-                            "description": "Postal or ZIP code.",
+                            "description": "Postal or ZIP code. Empty for an address without one.",
                             "required": true,
                             "nullable": false,
                             "expandable": false
